@@ -1,4 +1,4 @@
-GENSRC=pbf_fib.c pbf_life.c pbf_hello.c pbf_mandel.c
+GENSRC=pbf_fib.c pbf_life.c pbf_hello.c pbf_mandel.c pbf_sierp.c
 BIN=$(GENSRC:.c=)
 
 all: $(BIN)
@@ -18,6 +18,10 @@ pbf_hello: pbf_pre.c ../bfprogs/hello.bf
 pbf_mandel: pbf_pre.c ../bfprogs/mandelbrot.bf
 	python toker.py -t pbf_pre.c -bf ../bfprogs/mandelbrot.bf > pbf_mandel.c
 	gcc -std=c99 -Wall -O3 -D_BSD_SOURCE -D_FORTIFY_SOURCE=0 pbf_mandel.c -o pbf_mandel
+
+pbf_sierp: pbf_pre.c ../bfprogs/sierpinski.bf
+	python toker.py -t pbf_pre.c -bf ../bfprogs/sierpinski.bf > pbf_sierp.c
+	gcc -std=c99 -Wall -O3 -D_BSD_SOURCE -D_FORTIFY_SOURCE=0 pbf_sierp.c -o pbf_sierp
 
 .PHONY=clean
 clean:
