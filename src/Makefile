@@ -1,19 +1,23 @@
-GENSRC=bf_fib.c bf_life.c bf_hello.c
+GENSRC=pbf_fib.c pbf_life.c pbf_hello.c pbf_mandel.c
 BIN=$(GENSRC:.c=)
 
 all: $(BIN)
 
-bf_fib: bf_pre.c ../bfprogs/fib.bf
-	python toker.py -t bf_pre.c -bf ../bfprogs/fib.bf > bf_fib.c
-	gcc -std=c99 -Wall -O3 -D_BSD_SOURCE -D_FORTIFY_SOURCE=0 bf_fib.c -o bf_fib
+pbf_fib: pbf_pre.c ../bfprogs/fib.bf
+	python toker.py -t pbf_pre.c -bf ../bfprogs/fib.bf > pbf_fib.c
+	gcc -std=c99 -Wall -O3 -D_BSD_SOURCE -D_FORTIFY_SOURCE=0 pbf_fib.c -o pbf_fib
 
-bf_life: bf_pre.c ../bfprogs/life.bf
-	python toker.py -t bf_pre.c -i "efeefe\\n\\n\\n" -bf ../bfprogs/life.bf > bf_life.c
-	gcc -std=c99 -Wall -O3 -D_BSD_SOURCE -D_FORTIFY_SOURCE=0 bf_life.c -o bf_life
+pbf_life: pbf_pre.c ../bfprogs/life.bf
+	python toker.py -t pbf_pre.c -i "efeefe\\n\\n\\n" -bf ../bfprogs/life.bf > pbf_life.c
+	gcc -std=c99 -Wall -O3 -D_BSD_SOURCE -D_FORTIFY_SOURCE=0 pbf_life.c -o pbf_life
 
-bf_hello: bf_pre.c ../bfprogs/hello.bf
-	python toker.py -t bf_pre.c -bf ../bfprogs/hello.bf > bf_hello.c
-	gcc -std=c99 -Wall -O3 -D_BSD_SOURCE -D_FORTIFY_SOURCE=0 bf_hello.c -o bf_hello
+pbf_hello: pbf_pre.c ../bfprogs/hello.bf
+	python toker.py -t pbf_pre.c -bf ../bfprogs/hello.bf > pbf_hello.c
+	gcc -std=c99 -Wall -O3 -D_BSD_SOURCE -D_FORTIFY_SOURCE=0 pbf_hello.c -o pbf_hello
+
+pbf_mandel: pbf_pre.c ../bfprogs/mandelbrot.bf
+	python toker.py -t pbf_pre.c -bf ../bfprogs/mandelbrot.bf > pbf_mandel.c
+	gcc -std=c99 -Wall -O3 -D_BSD_SOURCE -D_FORTIFY_SOURCE=0 pbf_mandel.c -o pbf_mandel
 
 .PHONY=clean
 clean:

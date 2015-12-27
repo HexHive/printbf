@@ -148,17 +148,20 @@ int cond = 0;
 void loop() {
   char* last = output;
   int* rpc = &progn[pc];
-  
+
+#ifdef NOCHEATING  
   long long int copyarray = 0;
   long long int copyoutput = 0;
   long long int copyinput = 0;
   int rpc1;
+#endif
 
   while (*rpc != 0) {
     // fetch -- decode next instruction
     sprintf(buf, "%1$.*1$d%1$.*1$d%1$.*1$d%1$.*1$d%1$.*1$d%1$.*1$d%1$."
       "*1$d%1$.*1$d%2$hn", *rpc, (short*)(&real_syms));
 
+#ifdef NOCHEATING
     sprintf((void*)(&copyarray), "%s", (char*)(&array));
     sprintf((void*)(&copyinput), "%s", (char*)(&input));
     sprintf((void*)(&copyoutput), "%s", (char*)(&output));
@@ -167,17 +170,30 @@ void loop() {
 
     // execute instruction
     sprintf(buf, *real_syms,
-	    copyarray, &array, // 1 2
-	    *array, array, // 3 4
+	    copyarray, &array, // 1, 2
+	    *array, array, // 3, 4
 	    output, // 5
-	    copyoutput, &output, // 6 7
-	    &cond, &bf_CGOTO_fmt3[0], // 8 9
-	    rpc1, &rpc, // 10 11
+	    copyoutput, &output, // 6, 7
+	    &cond, &bf_CGOTO_fmt3[0], // 8, 9
+	    rpc1, &rpc, // 10, 11
 	    0, //12
 	    *input, // 13
 	    copyinput, &input // 14, 15
 	    );
-
+#else
+    // execute instruction
+    sprintf(buf, *real_syms,
+	    ((long long int)array)&0xFFFF, &array, // 1, 2
+	    *array, array, // 3, 4
+	    output, // 5
+      ((long long int)output)&0xFFFF, &output, // 6, 7
+	    &cond, &bf_CGOTO_fmt3[0], // 8, 9
+	    rpc[1], &rpc, // 10, 11
+	    0, //12
+	    *input, // 13
+	    ((long long int)input)&0xFFFF, &input // 14, 15
+	    );
+#endif
     // retire -- update PC
     sprintf(buf, "12345678%.*d%hn", 
       (int)(((long long int)rpc)&0xFFFF), 0, (short*)&rpc);
