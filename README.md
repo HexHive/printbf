@@ -1,5 +1,10 @@
 # printbf -- Brainfuck interpreter in printf
 
+## Authors
+* [Mathias Payer](http://nebelwelt.net)
+* [Nicholas Carlini](http://nicholas.carlini.com)
+
+## Background
 printf itself can be Turing complete as shown in [Control-Flow
 Bending](http://nebelwelt.net/publications/#15SEC). Here we take
 printf-oriented programming one step further and preset a brainfuck
@@ -23,6 +28,8 @@ their mapping to format strings):
 * [ == if (*dataptr == 0) goto ']'  (%1$.*1$d%10$.*10$d%2$hn)
 * ] == if (*dataptr != 0) goto '['  (%1$.*1$d%10$.*10$d%2$hn)
 
+
+## Demo and sources
 Have a look at the bf_pre.c sources to see what is needed to setup the
 interpreter and also look at the tokenizer in toker.py.
 
