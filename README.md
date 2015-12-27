@@ -23,3 +23,7 @@ their mapping to format strings):
 * [ == if (*dataptr == 0) goto ']'  (%1$.*1$d%10$.*10$d%2$hn)
 * ] == if (*dataptr != 0) goto '['  (%1$.*1$d%10$.*10$d%2$hn)
 
+Have a look at the bf_pre.c sources to see what is needed to setup the
+interpreter and also look at the tokenizer in toker.py.
+
+Run make in ./src to generate a couple of sample programs (in ./src).
