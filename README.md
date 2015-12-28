@@ -16,6 +16,13 @@ parameter to a printf-like statement) or if the attacker can control the
 first argument to a printf statement through, e.g., a generic memory
 corruption.
 
+Note that the demo uses FORTIFY_SOURCE=0 to keep the demo simple. To use
+printbf in the wild an attacker will first use memory corruption to modify
+the internal state of printf (by setting the corresponding flags in the file
+struct) to enable %n and format strings in writable memory. The attacker
+model for printbf assumes that the attacker can use memory corruption
+vulnerabilities to set-up the attack.
+
 Brainfuck is a Turing-complete language that has the following commands (and
 their mapping to format strings):
 
