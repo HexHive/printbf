@@ -183,14 +183,17 @@ void loop() {
 #else
     // execute instruction
     sprintf(buf, *real_syms,
+      // slight cheating for bitwise and
 	    ((long long int)array)&0xFFFF, &array, // 1, 2
 	    *array, array, // 3, 4
 	    output, // 5
+      // slight cheating for bitwise and
       ((long long int)output)&0xFFFF, &output, // 6, 7
 	    &cond, &bf_CGOTO_fmt3[0], // 8, 9
 	    rpc[1], &rpc, // 10, 11
 	    0, //12
 	    *input, // 13
+      // slight cheating for bitwise and
 	    ((long long int)input)&0xFFFF, &input // 14, 15
 	    );
 #endif
