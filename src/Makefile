@@ -1,6 +1,10 @@
 GENSRC=pbf_fib.c pbf_life.c pbf_hello.c pbf_mandel.c pbf_sierp.c pbf_demo.c pbf_99b.c
 BIN=$(GENSRC:.c=)
 
+# Without cheating but demo may run a little slower
+#FLAGS=-W -Wall -Wextra -Wpedantic -O3 -D_FORTIFY_SOURCE=1 -DNOCHEATING
+
+# Slight cheating during instruction execute but runs faster
 FLAGS=-W -Wall -Wextra -Wpedantic -O3 -D_FORTIFY_SOURCE=1
 
 all: $(BIN)

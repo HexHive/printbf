@@ -171,7 +171,7 @@ void loop() {
     sprintf((void*)(&copyinput), "%s", (char*)(&input));
     sprintf((void*)(&copyoutput), "%s", (char*)(&output));
     sprintf((void*)(&rpc1), "%s", (char*)(&rpc[1]));
-    sprintf((void*)(&rpc1)+1, "%s", (char*)(&rpc[1])+1);
+    sprintf((char*)(&rpc1)+1, "%s", (char*)(&rpc[1])+1);
 
     /* execute instruction */
     sprintf(buf, *real_syms,
