@@ -1,7 +1,7 @@
 GENSRC=pbf_fib.c pbf_life.c pbf_hello.c pbf_mandel.c pbf_sierp.c pbf_demo.c pbf_99b.c
 BIN=$(GENSRC:.c=)
 
-FLAGS=-std=c99 -Wall -O3 -D_BSD_SOURCE -D_FORTIFY_SOURCE=1
+FLAGS=-W -Wall -Wextra -Wpedantic -O3 -D_BSD_SOURCE -D_FORTIFY_SOURCE=1
 
 all: $(BIN)
 
