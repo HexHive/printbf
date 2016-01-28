@@ -52,9 +52,9 @@ and allowed according to the standard but rarely used in practicy) or (ii)
 through a set of of patches that test for attack-like conditions, e.g., if
 the format string is in writable memory.
 
-To use printbf in the wild an attacker will first use memory corruption to
-modify the internal state of printf (by setting the corresponding flags in
-the file struct when it is spilled on the stack) to enable %n and format
-strings in writable memory. The attacker model for printbf assumes that the
-attacker can use memory corruption vulnerabilities to set-up the attack or
+To use printbf in the wild an attacker will either have to disable
+FORTIFY_SOURCE checking or get around the checks by placing lining up the
+format strings and placing them in readonly memory. The FORTIFY_SOURCE
+mitigations are glibc specific. The attacker model for printbf assumes that
+the attacker can use memory corruption vulnerabilities to set-up the attack or
 that the sources are compiled without enabled FORTIFY_SOURCE defenses. 
