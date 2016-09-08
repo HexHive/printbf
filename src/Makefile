@@ -5,7 +5,7 @@ BIN=$(GENSRC:.c=)
 #FLAGS=-W -Wall -Wextra -Wpedantic -O3 -D_FORTIFY_SOURCE=1 -DNOCHEATING
 
 # Slight cheating during instruction execute but runs faster
-FLAGS=-W -Wall -Wextra -Wpedantic -O3 -D_FORTIFY_SOURCE=1
+FLAGS=-W -Wall -Wextra -Wpedantic -O3 -U_FORTIFY_SOURCE
 
 all: $(BIN)
 
