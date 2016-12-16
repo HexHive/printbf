@@ -22,8 +22,8 @@ disclaimer below for practical ``in the wild'' considerations.
 Brainfuck is a Turing-complete language that has the following commands (and
 their mapping to format strings):
 
-* > == dataptr++  (%1$65535d%1$.\*1$d%2$hn)
-* < == dataptr--  (%1$.\*1$d %2$hn)
+* > == dataptr++  (%1$.\*1$d %2$hn)
+* < == dataptr--  (%1$65535d%1$.\*1$d%2$hn)
 * + == \*dataptr++  (%3$.\*3$d %4$hhn)
 * - == \*dataptr--  (%3$255d%3$.\*3$d%4$hhn -- plus check for ovfl)
 * . == putchar(\*dataptr)  (%3$.\*3$d%5$hn)
