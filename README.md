@@ -48,7 +48,7 @@ generic attack vector. This demo is NOT intended to be a generic
 FORTIFY_SOURCE bypass.
 
 Current systems often either (i) disable %n (which is used to write to memory
-and allowed according to the standard but rarely used in practicy) or (ii)
+and allowed according to the standard but rarely used in practice) or (ii)
 through a set of of patches that test for attack-like conditions, e.g., if
 the format string is in writable memory.
 
