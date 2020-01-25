@@ -24,8 +24,8 @@ their mapping to format strings):
 
 * `>` == dataptr++  (`%1$.*1$d %2$hn`)
 * `<` == dataptr--  (`%1$65535d%1$.*1$d%2$hn`)
-* `+` == \*dataptr++  (`%3$.*3$d %4$hhn`)
-* `-` == \*dataptr--  (`%3$255d%3$.*3$d%4$hhn` -- plus check for ovfl)
+* `+` == (\*dataptr)++  (`%3$.*3$d %4$hhn`)
+* `-` == (\*dataptr)--  (`%3$255d%3$.*3$d%4$hhn` -- plus check for ovfl)
 * `.` == putchar(\*dataptr)  (`%3$.*3$d%5$hn`)
 * `,` == getchar(dataptr)  (`%13$.*13$d%4$hn`)
 * `[` == if (\*dataptr == 0) goto `]`  (`%1$.*1$d%10$.*10$d%2$hn`)
