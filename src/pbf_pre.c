@@ -4,6 +4,8 @@
 #include <string.h>
 #include <sys/time.h>
 
+#define ARRSIZE (2<<24)
+
 char buf[250000];
 
 /* array will be used to not spill to stdout */
@@ -90,26 +92,26 @@ void setup() {
   real_syms = (char**)calloc(1,1<<17);
   real_syms = (char**)((char*)real_syms + 0x10000-(((long)real_syms)&0xFFFF));
 
-  for (i = 0; i < sizeof(syms)/sizeof(*syms); i++) {
+  for (i = 0; i < sizeof syms/sizeof(*syms); i++) {
     real_syms[i] = syms[i];
   }
 
-  array_ = malloc(2<<24);
+  array_ = malloc(ARRSIZE);
   array = (void*)((char*)array_ + 0x1000000-(((long)array_)&0xFFFFFF));
-  output_ = malloc(2<<24);
+  output_ = malloc(ARRSIZE);
   output = (void*)((char*)output_ + 0x1000000-(((long)output_)&0xFFFFFF));
-  input_ = malloc(2<<24);
+  input_ = malloc(ARRSIZE);
   input = (void*)((char*)input_ + 0x1000000-(((long)input_)&0xFFFFFF));
 
   progn = (void*)((char*)progn_ + 0x10000-(((long)progn_)&0xFFFF));
 
-  for (i = 0; i < sizeof(array_)/sizeof(*array); i++) {
+  for (i = 0; i < ARRSIZE/sizeof(*array); i++) {
     array_[i] = 0;
   }
-  for (i = 0; i < sizeof(progn_)/sizeof(*progn); i++) {
+  for (i = 0; i < sizeof progn_/sizeof(*progn); i++) {
     progn_[i] = 0;
   }
-  for (i = 0; i < sizeof(input_)/sizeof(*input); i++) {
+  for (i = 0; i < ARRSIZE /sizeof(*input); i++) {
     input_[i] = -1;
   }
 
