@@ -115,32 +115,32 @@ void setup() {
     input_[i] = -1;
   }
 
-  strcpy(bf_LT_fmt, "%1$65535d%1$.*1$d%2$hn");
-  strcpy(bf_GT_fmt, "%1$.*1$d %2$hn");
-  strcpy(bf_PLUS_fmt, "%3$.*3$d %4$hhn");
-  strcpy(bf_MINUS_fmt, "%3$255d%3$.*3$d%4$hhn");
+  sprintf(bf_LT_fmt, "%s", "%1$65535d%1$.*1$d%2$hn");
+  sprintf(bf_GT_fmt, "%s", "%1$.*1$d %2$hn");
+  sprintf(bf_PLUS_fmt, "%s", "%3$.*3$d %4$hhn");
+  sprintf(bf_MINUS_fmt, "%s", "%3$255d%3$.*3$d%4$hhn");
 
-  strcpy(bf_DOT_fmt1, "%3$.*3$d%5$hn");
-  strcpy(bf_DOT_fmt2, "%6$.*6$d %7$hn");
+  sprintf(bf_DOT_fmt1, "%s", "%3$.*3$d%5$hn");
+  sprintf(bf_DOT_fmt2, "%s", "%6$.*6$d %7$hn");
 
-  strcpy(bf_COMMA_fmt1, "%13$.*13$d%4$hn");
-  strcpy(bf_COMMA_fmt2, "%14$.*14$d %15$hn");
+  sprintf(bf_COMMA_fmt1, "%s", "%13$.*13$d%4$hn");
+  sprintf(bf_COMMA_fmt2, "%s", "%14$.*14$d %15$hn");
 
-  strcpy(bf_GOTO_fmt, "%10$.*10$d%11$hn");
+  sprintf(bf_GOTO_fmt, "%s", "%10$.*10$d%11$hn");
 
-  strcpy(bf_CGOTO_fmt1, "%8$n%4$s%8$hhn"); 
-  strcpy(bf_CGOTO_fmt2, "%8$s%12$255d%9$hhn");
-  strcpy(bf_CGOTO_fmt3, "    %10$.*10$d%11$hn"); 
+  sprintf(bf_CGOTO_fmt1, "%s", "%8$n%4$s%8$hhn"); 
+  sprintf(bf_CGOTO_fmt2, "%s", "%8$s%12$255d%9$hhn");
+  sprintf(bf_CGOTO_fmt3, "%s", "    %10$.*10$d%11$hn"); 
 
-  strcpy(bf_ZERO_fmt, "%4$hhn"); 
+  sprintf(bf_ZERO_fmt, "%s", "%4$hhn"); 
 
-  strcpy(bf_FORWARD_N_fmt, "%1$.*1$d%10$.*10$d%2$hn"); 
+  sprintf(bf_FORWARD_N_fmt, "%s", "%1$.*1$d%10$.*10$d%2$hn"); 
 
-  strcpy(bf_BACKWARD_N_fmt1, "%1$.*1$d%10$.*10$d%2$hn");
+  sprintf(bf_BACKWARD_N_fmt1, "%s", "%1$.*1$d%10$.*10$d%2$hn");
 
-  strcpy(bf_ADD_N_fmt, "%3$.*3$d%10$.*10$d%4$hhn"); 
+  sprintf(bf_ADD_N_fmt, "%s", "%3$.*3$d%10$.*10$d%4$hhn"); 
 
-  strcpy(bf_FETCH_fmt, "%1$.*1$d%1$.*1$d%1$.*1$d%1$.*1$d%1$.*1$d%1$.*1$d%1$."
+  sprintf(bf_FETCH_fmt, "%s", "%1$.*1$d%1$.*1$d%1$.*1$d%1$.*1$d%1$.*1$d%1$.*1$d%1$."
       "*1$d%1$.*1$d%2$hn");
 }
 
@@ -226,7 +226,7 @@ int main() {
 
   gettimeofday(&tval_before, NULL);
 
-  strcpy(input, "###INPUT###");
+  sprintf(input, "%s", "###INPUT###");
 
   /* execute the bf program */
   loop();
