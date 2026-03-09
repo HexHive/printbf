@@ -10,31 +10,31 @@ FLAGS=-W -Wall -Wextra -Wpedantic -O3 -U_FORTIFY_SOURCE
 all: $(BIN)
 
 pbf_fib: pbf_pre.c ../bfprogs/fib.bf
-	python toker.py -t pbf_pre.c -bf ../bfprogs/fib.bf > pbf_fib.c
+	python3 toker.py -t pbf_pre.c -bf ../bfprogs/fib.bf > pbf_fib.c
 	gcc $(FLAGS) pbf_fib.c -o pbf_fib
 
 pbf_life: pbf_pre.c ../bfprogs/life.bf
-	python toker.py -t pbf_pre.c -i "efeefe\\n\\n\\n" -bf ../bfprogs/life.bf > pbf_life.c
+	python3 toker.py -t pbf_pre.c -i "efeefe\\n\\n\\n" -bf ../bfprogs/life.bf > pbf_life.c
 	gcc $(FLAGS) pbf_life.c -o pbf_life
 
 pbf_hello: pbf_pre.c ../bfprogs/hello.bf
-	python toker.py -t pbf_pre.c -bf ../bfprogs/hello.bf > pbf_hello.c
+	python3 toker.py -t pbf_pre.c -bf ../bfprogs/hello.bf > pbf_hello.c
 	gcc $(FLAGS) pbf_hello.c -o pbf_hello
 
 pbf_mandel: pbf_pre.c ../bfprogs/mandelbrot.bf
-	python toker.py -t pbf_pre.c -bf ../bfprogs/mandelbrot.bf > pbf_mandel.c
+	python3 toker.py -t pbf_pre.c -bf ../bfprogs/mandelbrot.bf > pbf_mandel.c
 	gcc $(FLAGS) pbf_mandel.c -o pbf_mandel
 
 pbf_sierp: pbf_pre.c ../bfprogs/sierpinski.bf
-	python toker.py -t pbf_pre.c -bf ../bfprogs/sierpinski.bf > pbf_sierp.c
+	python3 toker.py -t pbf_pre.c -bf ../bfprogs/sierpinski.bf > pbf_sierp.c
 	gcc $(FLAGS) pbf_sierp.c -o pbf_sierp
 
 pbf_demo: pbf_pre.c ../bfprogs/demo.bf
-	python toker.py -t pbf_pre.c -i A -bf ../bfprogs/demo.bf > pbf_demo.c
+	python3 toker.py -t pbf_pre.c -i A -bf ../bfprogs/demo.bf > pbf_demo.c
 	gcc $(FLAGS) pbf_demo.c -o pbf_demo
 
 pbf_99b: pbf_pre.c ../bfprogs/99bottles.bf
-	python toker.py -t pbf_pre.c -i A -bf ../bfprogs/99bottles.bf > pbf_99b.c
+	python3 toker.py -t pbf_pre.c -i A -bf ../bfprogs/99bottles.bf > pbf_99b.c
 	gcc $(FLAGS) pbf_99b.c -o pbf_99b
 
 .PHONY=clean
